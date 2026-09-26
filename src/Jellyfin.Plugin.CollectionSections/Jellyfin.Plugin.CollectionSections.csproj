@@ -8,6 +8,7 @@
         <JellyfinNugetVersion Condition="$(JellyfinVersion.StartsWith('10.11.0'))">10.11.0</JellyfinNugetVersion>
         <JellyfinNugetVersion Condition="'$(JellyfinVersion)' == '10.11.10'">10.11.9</JellyfinNugetVersion>
         <TargetFramework Condition="$(JellyfinVersion.StartsWith('10.11'))">net9.0</TargetFramework>
+        <TargetFramework Condition="$(JellyfinVersion.StartsWith('12.'))">net10.0</TargetFramework>
         <TargetFramework Condition="'$(JellyfinVersion)' == '10.10.7'">net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
@@ -43,7 +44,7 @@
         <None Include="JellyfinVersionSpecific/10.11/*.cs" />
         <Compile Remove="JellyfinVersionSpecific/10.11/*.cs" />
     </ItemGroup>
-    <ItemGroup Condition="'$(JellyfinNugetVersion)' != '10.11.9' AND '$(JellyfinNugetVersion)' != '10.11.11'">
+    <ItemGroup Condition="'$(JellyfinNugetVersion)' != '10.11.9' AND '$(JellyfinNugetVersion)' != '10.11.11' AND !$(JellyfinVersion.StartsWith('12.'))">
         <None Include="JellyfinVersionSpecific/10.11.9/*.cs" />
         <Compile Remove="JellyfinVersionSpecific/10.11.9/*.cs" />
     </ItemGroup>
